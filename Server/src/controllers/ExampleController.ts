@@ -14,6 +14,9 @@ export class ExampleController extends BaseController {
         this._exampleService = exampleService;
     }
     
+    // TODO: properly handle errors by using methods from BaseController. 
+    // They are all currently 500.
+
     public getAllExamples = async (req: Request, res: Response): Promise<void> => {
         try {
             const examples = await this._exampleService.getAllExamples();
@@ -41,8 +44,21 @@ export class ExampleController extends BaseController {
         }
     }
 
-    // TODO: EDIT ROUTE
+    public editExample = async (req: Request<RouteParams, any, Example >, res: Response): Promise<void> => {
+        try {
+            const example = await this._exampleService.editExample(req.params.id, req.body)
+            this.ok(res, example)
+        } catch (error) {
+            this.fail(res, error as Error);
+        }
+    }
 
-    // TODO: DELETE ROUTE
-
+    public deleteExample = async (req: Request<RouteParams>, res: Response): Promise<void> => {
+        try {
+            const deleted = await this._exampleService.deleteExample(req.params.id);
+            this.ok(res, deleted);
+        } catch (error) {
+            this.fail(res, error as Error);
+        }
+    }
 }

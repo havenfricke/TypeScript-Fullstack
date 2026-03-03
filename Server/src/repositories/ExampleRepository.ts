@@ -16,12 +16,21 @@ export class ExampleRepository {
 
     public async createExample(body: Example): Promise<Example> {
         const createSql: string = "INSERT INTO examples (name, description) VALUES (?, ?)";
-        const insertResult = await query<ResultSetHeader>(createSql, [body.name, body.description]);
+        const insertResult: ResultSetHeader = await query<ResultSetHeader>(createSql, [body.name, body.description]);
         const selectSql: string = "SELECT * FROM examples WHERE id = ?";
         return await query<Example>(selectSql, [insertResult.insertId]);
     }
 
-    // TODO: EDIT QUERY
+    public async editExample(id: string, body: Example): Promise<Example> {
+        const editSql: string = "UPDATE examples SET (name, description) WHERE id = ?";
+        const updateResult: ResultSetHeader = await query<ResultSetHeader>(editSql, [body.name, body.description]);
+        const selectSql: string = "SELECT * FROM examples WHERE id = ?";
+        return await query<Example>(selectSql, [updateResult.insertId]);
+    }
 
-    // TODO: DELETE QUERY
+    public async deleteExample(id: String): Promise<boolean> {
+    const sql = "DELETE FROM examples WHERE id = ?";
+    const result = await query<any>(sql, [id]);
+    return result.rowsAffected > 0;
+}
 }

@@ -43,7 +43,33 @@ export class ExampleService {
         return example;
     }
 
-    // TODO: EDIT ROUTE
+    public async editExample(id: String, body: Example): Promise<Example> {
+        const original = await this._exampleRepo.getExampleById(id);
 
-    // TODO: DELETE ROUTE
+        if (!original)
+        {
+            throw new Error("Example to edit not found.");
+        }
+
+        // if update value == original value, use original. Else, use update value.
+        const updatedExample: Example = {
+            id: original.id,
+            name: original.name == body.name ? original.name : body.name,
+            description: original.description == body.description ? original.description : body.description
+        };
+
+        const updated = await this._exampleRepo.editExample(original.id, updatedExample);
+
+        return updated;
+    }
+
+    public async deleteExample(id: String): Promise<boolean> {
+        const deleted = await this._exampleRepo.deleteExample(id);
+
+        if (!deleted) {
+            throw new Error("Failed to delete.");
+        }
+        
+        return deleted;
+    }
 }
