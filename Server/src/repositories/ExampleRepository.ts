@@ -1,14 +1,15 @@
 import { Example } from "../models/Example"
+import { query } from "../DB/DbConnection"
 
 export class ExampleRepository {
-    // Simulating a database table
-    private examples: Example[] = [
-        { id: '1', name: 'First Example', description: 'Hello World' },
-        { id: '2', name: 'Second Example' }
-    ];
+    
+    public async getAllExamples(): Promise<Example[]> {
+        const sql: string = "SELECT * FROM examples";
+        return await query<Example[]>(sql, []);
+    }
 
-    public getAllExamples(): Example[] {
-        // TODO: add mysql library for TS and update repo layer
-        return this.examples;
+    public async getExampleById(id: String): Promise<Example> {
+        const sql: string = "SELECT * FROM examples WHERE id = ?";
+        return await query<Example>(sql, [id]);  
     }
 }

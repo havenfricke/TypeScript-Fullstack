@@ -10,8 +10,8 @@ export class ExampleService {
         this._exampleRepo = exampleRepo;
     }
 
-    public getAllExamples(): Example[] {
-        // Business logic here 
+    public getAllExamples(): Promise<Example[]> {
+
         const examples = this._exampleRepo.getAllExamples();
         
         if (!examples) {
@@ -19,5 +19,16 @@ export class ExampleService {
         }
 
         return examples;
+    }
+
+    public getExampleById(id: String): Promise<Example> {
+
+        const example = this._exampleRepo.getExampleById(id);
+
+        if (!example) {
+            throw new Error("Failed to retrieve example by id.");
+        }
+
+        return example;
     }
 }

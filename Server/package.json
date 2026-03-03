@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "A scaffold for full stack development",
   "main": "index.js",
   "scripts": {
     "build": "tsc",

@@ -12,14 +12,20 @@ export class ExampleController extends BaseController {
         this._exampleService = exampleService;
     }
     
-    public getAllExamples = (req: Request, res: Response): void => {
+    public getAllExamples = async (req: Request, res: Response): Promise<void> => {
         try {
-            // Call the service
-            const data = this._exampleService.getAllExamples();
-            // Return HTTP 200 OK with the data payload using the BaseController
-            this.ok(res, data);
+            const examples = await this._exampleService.getAllExamples();
+            this.ok(res, examples);
         } catch (error) {
-            // Handle unexpected internal errors gracefully
+            this.fail(res, error as Error);
+        }
+    }
+
+    public getExampleById = async (req: Request, res: Response): Promise<void> => {
+        try {
+            const example = await this._exampleService.getExampleById(req.params.id as string);
+            this.ok(res, example)
+        } catch (error) {
             this.fail(res, error as Error);
         }
     }

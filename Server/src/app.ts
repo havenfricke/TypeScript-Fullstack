@@ -1,8 +1,12 @@
 import express, { Application, Request, Response } from 'express';
 import indexRoutes from './routes/index';
+import dotenv from "dotenv";
+
+// .env setup
+dotenv.config();
 
 const app: Application = express();
-const PORT = 3000;
+const PORT = process.env.LISTEN_PORT; 
 
 // Middleware for parsing JSON
 app.use(express.json());
