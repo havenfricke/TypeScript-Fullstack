@@ -19,5 +19,6 @@ const exampleController = new ExampleController(exampleService);
 // Map the route to the controller action
 router.get('/examples', exampleController.getAllExamples);
 router.get('/examples/:id', exampleController.getExampleById);
+router.post('/examples', exampleController.createExample);
 
 export default router;

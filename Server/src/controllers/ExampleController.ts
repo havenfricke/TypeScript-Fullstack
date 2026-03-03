@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { BaseController } from './BaseController';
 import { ExampleService } from '../services/ExampleService';
+import { RouteParams } from '../models/RouteParams';
+import { Example } from '../models/Example';
 
 export class ExampleController extends BaseController {
 
@@ -21,9 +23,18 @@ export class ExampleController extends BaseController {
         }
     }
 
-    public getExampleById = async (req: Request, res: Response): Promise<void> => {
+    public getExampleById = async (req: Request<RouteParams>, res: Response): Promise<void> => {
         try {
-            const example = await this._exampleService.getExampleById(req.params.id as string);
+            const example = await this._exampleService.getExampleById(req.params.id);
+            this.ok(res, example)
+        } catch (error) {
+            this.fail(res, error as Error);
+        }
+    }
+
+    public createExample = async (req: Request<{}, any, Example>, res: Response): Promise<void> => {
+        try {
+            const example = await this._exampleService.createExample(req.body);
             this.ok(res, example)
         } catch (error) {
             this.fail(res, error as Error);

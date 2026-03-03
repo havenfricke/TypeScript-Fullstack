@@ -10,9 +10,9 @@ export class ExampleService {
         this._exampleRepo = exampleRepo;
     }
 
-    public getAllExamples(): Promise<Example[]> {
+    public async getAllExamples(): Promise<Example[]> {
 
-        const examples = this._exampleRepo.getAllExamples();
+        const examples = await this._exampleRepo.getAllExamples();
         
         if (!examples) {
             throw new Error("Failed to retrieve examples.");
@@ -21,12 +21,23 @@ export class ExampleService {
         return examples;
     }
 
-    public getExampleById(id: String): Promise<Example> {
+    public async getExampleById(id: String): Promise<Example> {
 
-        const example = this._exampleRepo.getExampleById(id);
+        const example = await this._exampleRepo.getExampleById(id);
 
         if (!example) {
             throw new Error("Failed to retrieve example by id.");
+        }
+
+        return example;
+    }
+
+    public async createExample(body: Example): Promise<Example> {
+
+        const example = await this._exampleRepo.createExample(body);
+
+        if (!example) {
+            throw new Error('Failed to create example.')
         }
 
         return example;
