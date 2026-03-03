@@ -20,5 +20,7 @@ const exampleController = new ExampleController(exampleService);
 router.get('/examples', exampleController.getAllExamples);
 router.get('/examples/:id', exampleController.getExampleById);
 router.post('/examples', exampleController.createExample);
+// TODO: EDIT
+// TODO: DELETE
 
 export default router;

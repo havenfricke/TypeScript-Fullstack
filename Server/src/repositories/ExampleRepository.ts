@@ -15,9 +15,13 @@ export class ExampleRepository {
     }
 
     public async createExample(body: Example): Promise<Example> {
-    const createSql: string = "INSERT INTO examples (name, description) VALUES (?, ?)";
-    const insertResult = await query<ResultSetHeader>(createSql, [body.name, body.description]);
-    const selectSql: string = "SELECT * FROM examples WHERE id = ?";
-    return await query<Example>(selectSql, [insertResult.insertId]);
-}
+        const createSql: string = "INSERT INTO examples (name, description) VALUES (?, ?)";
+        const insertResult = await query<ResultSetHeader>(createSql, [body.name, body.description]);
+        const selectSql: string = "SELECT * FROM examples WHERE id = ?";
+        return await query<Example>(selectSql, [insertResult.insertId]);
+    }
+
+    // TODO: EDIT QUERY
+
+    // TODO: DELETE QUERY
 }
