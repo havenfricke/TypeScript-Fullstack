@@ -1,4 +1,5 @@
 import express, { Application, Request, Response } from 'express';
+import path from 'path';
 import indexRoutes from './routes/index';
 import dotenv from "dotenv";
 
@@ -10,6 +11,8 @@ const PORT = process.env.LISTEN_PORT;
 
 // Middleware for parsing JSON
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, '../views')));
 
 // Register modular routes
 app.use('/', indexRoutes);
