@@ -1,6 +1,5 @@
 ### TypeScript Express
 
-Usage Instructions:
-
+Getting Started:
 - `cd Server`
 - `npm i`
