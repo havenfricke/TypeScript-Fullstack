@@ -2,7 +2,6 @@ import { AppState } from "../AppState";
 import type Example from "../Models/Example";
 import { api } from "./AxiosService";
 
-// TODO: Write a service
 class ExampleService {
 
     async createExample(data: Example) {
