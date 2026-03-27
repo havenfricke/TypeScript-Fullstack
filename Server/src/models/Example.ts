@@ -1,5 +1,5 @@
 export interface Example {
-    id: string;
+    id: number;
     name: string;
     description?: string; // nullable type
 }

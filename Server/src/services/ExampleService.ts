@@ -21,7 +21,7 @@ export class ExampleService {
         return examples;
     }
 
-    public async getExampleById(id: String): Promise<Example> {
+    public async getExampleById(id: Number): Promise<Example> {
 
         const example = await this._exampleRepo.getExampleById(id);
 
@@ -43,7 +43,7 @@ export class ExampleService {
         return example;
     }
 
-    public async editExample(id: String, body: Example): Promise<Example> {
+    public async editExample(id: Number, body: Example): Promise<Example> {
         const original = await this._exampleRepo.getExampleById(id);
 
         if (!original)
@@ -63,7 +63,7 @@ export class ExampleService {
         return updated;
     }
 
-    public async deleteExample(id: String): Promise<boolean> {
+    public async deleteExample(id: Number): Promise<boolean> {
         const deleted = await this._exampleRepo.deleteExample(id);
 
         if (!deleted) {
