@@ -58,22 +58,22 @@ The core logic resides in the src/ directory. Here is the high-level map:
 **public folder** :
 Static files like images, SVGs, and text documents.
 
-**Src/Components**:
+**Components**:
 Shared UI components (Buttons, Inputs, Modals) that are used across multiple features.
 
-**Src/Models**:
+**Models**:
 Shared TypeScript interfaces and aliases.
 
-**Src/Pages**:
+**Pages**:
 Components that are specifically pages. Used in Router.tsx to match pages to url endpoints.
 
-**Src/Services**:
+**Services**:
 For scripts that utilize Axios to make API calls and interact with AppState.ts for application state control.
 
 **Utils**:
 For utility scripts and helpers. Assists in keeping the project clean and refactored.
 
-**Src/assets**:
+**assets**:
 For internal asset storage and retrieval. Similar to public folder only it is private.
 
 
