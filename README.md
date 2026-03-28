@@ -37,7 +37,7 @@ Responsible for additional refactored code dump called upon by the core system.
 **.env**
 Responsible for housing and distributing sensitive information throughout the application (hidden during runtime).
 
-#### Example data model (Server)
+### Example data model (Server)
 
 This model uses a TypeScript interface - a syntactical contract that defines the shape or structure of an object, function, or class by specifying its required properties and methods. 
 
