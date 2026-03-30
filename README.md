@@ -12,7 +12,7 @@ To install necessary packages / libraries:
 - `cd Server`
 - `npm i`
 
-To run either on a dev server use `npm run dev` while in either directory.
+To run either on a dev server use `npm run dev` while in either directory (Server or Client).
 
 ### Server Architecture
 
@@ -71,7 +71,7 @@ Components that are specifically pages. Used in Router.tsx to match pages to url
 For scripts that utilize Axios to make API calls and interact with AppState.ts for application state control.
 
 **Utils**:
-For utility scripts and helpers. Assists in keeping the project clean and refactored.
+Responsible for additional refactored code dump called upon by the core system.
 
 **assets**:
 For internal asset storage and retrieval. Similar to public folder only it is private.
