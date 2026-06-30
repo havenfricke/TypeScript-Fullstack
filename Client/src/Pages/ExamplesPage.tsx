@@ -27,13 +27,14 @@ const ExamplesPage = observer(() => {
         }
     };
 
-    return (
+     return (
         <div>
             <h2>Examples Page</h2>
             
-            {AppState.exampleArray.length === 0 ? (<p>Loading or no examples found...</p>) : (
+            {!Array.isArray(AppState.exampleArray) || AppState.exampleArray.length === 0 ? (
+                <p>Loading or no examples found...</p>
+            ) : (
                 <ul>
-
                     {AppState.exampleArray.map((example) => (
 
                         <li key={example.id}>
@@ -45,7 +46,6 @@ const ExamplesPage = observer(() => {
                             </button>
                         </li>
                     ))}
-
                 </ul>
             )}
         </div>
