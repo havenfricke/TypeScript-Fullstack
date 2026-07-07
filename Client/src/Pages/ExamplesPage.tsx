@@ -27,7 +27,7 @@ const ExamplesPage = observer(() => {
         }
     };
 
-     return (
+    return (
         <div>
             <h2>Examples Page</h2>
             

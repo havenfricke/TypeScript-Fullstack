@@ -1,12 +1,14 @@
 import { makeAutoObservable, action } from "mobx";
 import { propValidator } from "./Utils/PropValidator.js";
 import type Example from "./Models/Example.js";
+import type User from "./Models/User.js";
 
 class ObservableAppState {
 
   exampleObject: Example | null = null;
   exampleArray: Example[] = [];
   activeExample: Example | null = null;
+  user: User | null = null;
 
   constructor() {
     makeAutoObservable(this);

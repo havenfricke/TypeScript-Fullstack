@@ -2,13 +2,14 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "CommonJS",
-    "moduleResolution": "node",
+    "moduleResolution": "Node16", // "node" / node10 resolution is removed in 7.0; use Node16 or NodeNext to pair with CommonJS
     "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
+    "rootDir": "./src", // still required explicitly — 7.0 defaults rootDir to the project root if omitted, which breaks outDir layout for projects like this
+    "strict": true, // now the default in 7.0, but keeping it explicit is harmless and clearer
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "types": [] // 7.0 no longer auto-loads all @types packages; explicitly list any you need (e.g. ["node"])
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
