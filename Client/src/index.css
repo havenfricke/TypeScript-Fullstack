@@ -23,7 +23,13 @@ a:hover {
 }
 
 nav {
-  max-height: 20vh;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  border-bottom: solid 2px #FFFFFF;
 }
 
 body {
